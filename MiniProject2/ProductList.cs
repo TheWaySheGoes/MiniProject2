@@ -7,6 +7,12 @@ using System.Threading.Tasks;
 
 namespace MiniProject2
 {
+    /*
+     * Execution starts in main loop and switches between: Searching products,
+     * adding products, and showing the products table. There are safe guards for not int for price and multiple
+     * outs from loops. 
+     * 
+     */
     internal class ProductList
     {
         List<Product> products = new List<Product>();
@@ -25,7 +31,7 @@ namespace MiniProject2
         LoopType loopType = LoopType.PRODUCTS;
 
         /*
-         * Main logic, throwing the execution to specific loops
+         * Main logic, throwing the execution to specific loop
          */
         public void mainLoop()
         {
@@ -39,7 +45,6 @@ namespace MiniProject2
                             searchLoop();
                             break;
                         }
-
                     case LoopType.PRODUCTS:
                         {
                             productLoop();
@@ -67,7 +72,7 @@ namespace MiniProject2
 
                 printMsg(tableHeader);
                 printMsg(tableCategories, Color.GREEN);
-                products.OrderBy(product => product.ProductName).ToList().ForEach(product =>
+                products.OrderBy(product => product.Price).ToList().ForEach(product =>
                 {
                     if (product.ProductName == input)
                     {
@@ -95,8 +100,8 @@ namespace MiniProject2
                 }
                 else if (input == "Q")
                 {
-                    exitMainLoop = true;
                     exitSearchLoop = true;
+                    exitMainLoop = true;
                 }
                 //TODO exit
                 else { }
@@ -221,6 +226,9 @@ namespace MiniProject2
 
         }
 
+        /*
+         * Checks if Q is typed in console input
+         */
         private bool isExitProductsLoop(String msg, String exitCommand)
         {
             if (msg == exitCommand)
