@@ -16,12 +16,12 @@ namespace MiniProject2
     internal class ProductList
     {
         List<Product> products = new List<Product>();
-        String exitCommand = "Q";
         String exitOrProductMsg = "To enter a new product - follow the steps | To quit - enter: 'Q'";
         String exitOrProductOrSearchMsg = "To enter a new product enter 'P' | To search for product enter 'S' | To quit - enter: 'Q'";
         String categoryMsg = "Enter Category: ";
         String productMsg = "Enter Product: ";
         String priceMsg = "Enter Price: ";
+        String priceWholeNumberMsg = "Price must be a whole number ex. 1234";
         String tableHeader = "------------------------------------------------------------"; 
         String tableCategories = "Category".PadLeft(20) + "Product".PadLeft(20) + "Price".PadLeft(20);
         String tableFooter = "------------------------------------------------------------";
@@ -29,6 +29,9 @@ namespace MiniProject2
         bool exitMainLoop = false;
         bool exitSearchLoop = false;
         LoopType loopType = LoopType.PRODUCTS;
+        String productsKeyWord = "P";
+        String quitKeyWord = "Q";
+        String searchKeyWord = "S";
 
         /*
          * Main logic, throwing the execution to specific loop
@@ -88,17 +91,17 @@ namespace MiniProject2
                 printMsg(exitOrProductOrSearchMsg, Color.BLUE);
                 input = Console.ReadLine();
 
-                if (input == "P")
+                if (input == productsKeyWord)
                 {
                     loopType = LoopType.PRODUCTS;
                     exitSearchLoop = true;
                 }
-                else if (input == "S")
+                else if (input == searchKeyWord)
                 {
                     loopType = LoopType.SEARCH;
                     exitSearchLoop = false;
                 }
-                else if (input == "Q")
+                else if (input == quitKeyWord)
                 {
                     exitSearchLoop = true;
                     exitMainLoop = true;
@@ -126,7 +129,7 @@ namespace MiniProject2
                 printMsg(exitOrProductMsg, Color.YELLOW);
                 Console.Write(categoryMsg);
                 String input = Console.ReadLine().Trim();
-                if (isExitProductsLoop(input, exitCommand))
+                if (isExitProductsLoop(input, quitKeyWord))
                 {
                     exitProductLoop = true;
                 }
@@ -140,7 +143,7 @@ namespace MiniProject2
                 {
                     Console.Write(productMsg);
                     input = Console.ReadLine().Trim();
-                    if (isExitProductsLoop(input, exitCommand))
+                    if (isExitProductsLoop(input, quitKeyWord))
                     {
                         exitProductLoop = true;
                     }
@@ -155,7 +158,7 @@ namespace MiniProject2
                 if (!exitProductLoop){
                     Console.Write(priceMsg);
                     input = Console.ReadLine().Trim();
-                    if (isExitProductsLoop(input, exitCommand))
+                    if (isExitProductsLoop(input, quitKeyWord))
                     {
                         exitProductLoop = true;
                     }
@@ -163,9 +166,9 @@ namespace MiniProject2
                     {
                         while (!int.TryParse(input, out int number))
                         {
-                            printMsg("Price must be a whole number ex. 1234", Color.RED);
+                            printMsg(priceWholeNumberMsg, Color.RED);
                             input = Console.ReadLine().Trim();
-                            if (isExitProductsLoop(input, exitCommand))
+                            if (isExitProductsLoop(input, quitKeyWord))
                             {
                                 exitProductLoop = true;
                                 break;
@@ -211,13 +214,13 @@ namespace MiniProject2
             printMsg(exitOrProductOrSearchMsg, Color.BLUE);
             String input = Console.ReadLine();
             
-            if (input == "P")
+            if (input == productsKeyWord)
             {
                 loopType = LoopType.PRODUCTS;
-            }else if (input == "S")
+            }else if (input == searchKeyWord)
             {
                 loopType = LoopType.SEARCH;
-            }else if (input == "Q")
+            }else if (input == quitKeyWord)
             {
                 exitMainLoop = true;
             }
