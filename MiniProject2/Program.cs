@@ -1,2 +1,9 @@
-﻿// See https://aka.ms/new-console-template for more information
-Console.WriteLine("Hello, World!");
+﻿
+
+
+
+using MiniProject2;
+using System.ComponentModel;
+
+ProductList productList = new ProductList();
+productList.mainLoop();
