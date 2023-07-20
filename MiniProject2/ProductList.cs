@@ -38,7 +38,6 @@ namespace MiniProject2
          */
         public void mainLoop()
         {
-
             while (!exitMainLoop)
             {
                 switch (loopType)
@@ -69,7 +68,6 @@ namespace MiniProject2
         {
             while (!exitSearchLoop)
             {
-
                 Console.Write(productMsg);
                 String input = Console.ReadLine();
 
@@ -86,7 +84,6 @@ namespace MiniProject2
                         printMsg(product.toString());
                     }
                 });
-
                 printMsg(tableFooter);
                 printMsg(exitOrProductOrSearchMsg, Color.BLUE);
                 input = Console.ReadLine();
@@ -117,10 +114,8 @@ namespace MiniProject2
          */
         private void productLoop()
         {
-
             while (!exitProductLoop)
             {
-
                 String category = null;
                 String product = null;
                 int price = 0;
@@ -174,15 +169,12 @@ namespace MiniProject2
                                 break;
                             }
                         }
-
                         if (!exitProductLoop)
                         {
                             price = int.Parse(input);
                         }
                     }
                 }
-
-
 
                 if (!exitProductLoop)
                 {
@@ -192,8 +184,6 @@ namespace MiniProject2
                     tempProduct.Price = price;
                     products.Add(tempProduct);
                 }
-
-
 
             }
             exitProductLoop = false;
@@ -226,11 +216,10 @@ namespace MiniProject2
             }
             //TODO exit
             else { }
-
         }
 
         /*
-         * Checks if Q is typed in console input
+         * Checks if exitCommand is typed in console input
          */
         private bool isExitProductsLoop(String msg, String exitCommand)
         {
@@ -283,9 +272,7 @@ namespace MiniProject2
 
 
     }
-
-
-    }
+}
 
     enum Color
     {
