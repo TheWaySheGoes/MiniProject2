@@ -9,7 +9,7 @@ namespace MiniProject2
 {
     /*
      * Execution starts in main loop and switches between: Searching products,
-     * adding products, and showing the products table. There are safe guards for not int for price and multiple
+     * adding products, and showing the products table. There are safe guards for not decimal for price and multiple
      * outs from loops. 
      * 
      */
