@@ -21,7 +21,7 @@ namespace MiniProject2
         String categoryMsg = "Enter Category: ";
         String productMsg = "Enter Product: ";
         String priceMsg = "Enter Price: ";
-        String priceWholeNumberMsg = "Price must be a whole number ex. 1234";
+        String priceWholeNumberMsg = "Price must be a number ex. 1234,5";
         String tableHeader = "------------------------------------------------------------"; 
         String tableCategories = "Category".PadLeft(20) + "Product".PadLeft(20) + "Price".PadLeft(20);
         String tableFooter = "------------------------------------------------------------";
@@ -118,7 +118,7 @@ namespace MiniProject2
             {
                 String category = null;
                 String product = null;
-                int price = 0;
+                decimal price = 0;
 
                 //add category or exit
                 printMsg(exitOrProductMsg, Color.YELLOW);
@@ -149,7 +149,7 @@ namespace MiniProject2
                     }
                 }
                 
-                //add price (int) or exit
+                //add price or exit
                 if (!exitProductLoop){
                     Console.Write(priceMsg);
                     input = Console.ReadLine().Trim();
@@ -159,7 +159,7 @@ namespace MiniProject2
                     }
                     else if (!exitProductLoop)
                     {
-                        while (!int.TryParse(input, out int number))
+                        while (!decimal.TryParse(input, out decimal number))
                         {
                             printMsg(priceWholeNumberMsg, Color.RED);
                             input = Console.ReadLine().Trim();
@@ -171,7 +171,7 @@ namespace MiniProject2
                         }
                         if (!exitProductLoop)
                         {
-                            price = int.Parse(input);
+                            price = decimal.Parse(input);
                         }
                     }
                 }

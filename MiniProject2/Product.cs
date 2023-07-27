@@ -11,11 +11,11 @@ namespace MiniProject2
 
         internal String Category { get; set; }
         internal String ProductName { get; set; }
-        internal int Price { get; set; }
+        internal decimal Price { get; set; }
 
         public Product() { }
 
-        public Product(String category, String productName, int price)
+        public Product(String category, String productName, decimal price)
         {
             Category = category;
             ProductName = productName;
